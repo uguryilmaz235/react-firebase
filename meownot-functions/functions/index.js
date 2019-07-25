@@ -1,46 +1,62 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
 admin.initializeApp();
-exports.helloWorld = functions.https.onRequest((request, response) => {
-  response.send("Hello from Firebase! Hello World");
-});
-exports.getScreams = functions.https.onRequest((req, res) => {
+
+const express = require("express");
+const app = express();
+
+app.get("/screams", (req, res) => {
   admin
     .firestore()
     .collection("screams")
+    .orderBy("createdAt", "desc")
     .get()
     .then(data => {
       let screams = [];
       data.forEach(doc => {
-        screams.push(doc.data());
+        screams.push({
+          screamId: doc.id,
+          body: doc.data().body,
+          userHandle: doc.data().userHandle,
+          createdAt: doc.data().createdAt,
+          commentCount: doc.data().commentCount,
+          likeCount: doc.data().likeCount
+        });
       });
       return res.json(screams);
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({ error: err.code });
+    });
 });
 
-exports.createScream = functions.https.onRequest((req, res) => {
-  if (req.method !== "POST") {
-    return res.status(400).json({ error: "Method not allowed" });
+// Post one scream
+app.post("/scream", (req, res) => {
+  if (req.body.body.trim() === "") {
+    return res.status(400).json({ body: "Body must not be empty" });
   }
+
   const newScream = {
     body: req.body.body,
     userHandle: req.body.userHandle,
-    createdAt: admin.firestore.Timestamp.fromDate(new Date())
+    createdAt: new Date().toISOString()
   };
+
   admin
     .firestore()
     .collection("screams")
     .add(newScream)
     .then(doc => {
-      res.json({ message: `document ${doc.id} created successfully!` });
+      res.json({ message: `document ${doc.id} created successfully` });
     })
     .catch(err => {
       res.status(500).json({ error: "something went wrong" });
       console.error(err);
     });
 });
+
+// https://baseurl.com/api/
+
+exports.api = functions.region("us-central1").https.onRequest(app);

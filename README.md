@@ -32,4 +32,11 @@ By default, every Firebase project has free subdomains on the web.app and fireba
 Firebase initialization complete!
 </p>
 </li>
+
+</ul>
+
+<h1>Lesson 3</h1>
+<ul>
+<li><devsite-code><pre class="devsite-terminal" translate="no" dir="ltr" is-upgraded="">npm install --save express</pre>  </li>
+<li><devsite-code><pre class="devsite-terminal" translate="no" dir="ltr" is-upgraded="">firebase serve</pre>  </li>
 </ul>
