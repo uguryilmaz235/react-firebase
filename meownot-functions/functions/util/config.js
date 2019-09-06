@@ -5,5 +5,5 @@ module.exports = {
   projectId: "meow-not",
   storageBucket: "meow-not.appspot.com",
   messagingSenderId: "962613483826",
-  appId: "1:962613483826:web:223cb03c744aa62d"
+  appId: "1:962613483826:web:049cc7a308b01bf3"
 };
