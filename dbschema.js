@@ -28,6 +28,14 @@ let db = {
       catCount: 2,
       order: 1
     }
+  ],
+  comments: [
+    {
+      userHandle: "user",
+      screamId: "kdjsfgdksuufhgkdsufky",
+      body: "nice one mate!",
+      createdAt: "2019-03-15T10:59:52.798Z"
+    }
   ]
 };
 
