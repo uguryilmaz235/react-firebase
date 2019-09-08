@@ -1,1 +1,11 @@
 node_modules/
+
+
+
+# Created by https://www.gitignore.io/api/firebase
+# Edit at https://www.gitignore.io/?templates=firebase
+
+### Firebase ###
+.ServiceAccountKey.json
+
+# End of https://www.gitignore.io/api/firebase
