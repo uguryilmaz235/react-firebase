@@ -1,59 +1,32 @@
-import React, { Component } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import PropTypes from "prop-types";
-import AppIcon from "../images/icon.png";
-import axios from "axios";
-import { Link } from "react-router-dom";
-// MUI Stuff
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import React, { Component } from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
+import PropTypes from 'prop-types';
+import AppIcon from '../images/icon.png';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const styles = {
-  form: {
-    textAlign: "center"
-  },
-  image: {
-    margin: "10px auto 10px auto"
-  },
-  pageTitle: {
-    margin: "10px auto 10px auto"
-  },
-  TextField: {
-    margin: "10px auto 10px auto"
-  },
-  button: {
-    marginTop: 20,
-    position: "relative"
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8rem",
-    marginTop: 10
-  },
-  progress: {
-    position: "absolute"
-  }
-};
+// MUI Stuff
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const styles = (theme) => ({
+  ...theme
+});
 
 class login extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
       loading: false,
       errors: {}
     };
   }
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
       loading: true
@@ -63,29 +36,36 @@ class login extends Component {
       password: this.state.password
     };
     axios
-      .post("/login", userData)
-      .then(res => {
+      .post('/login', userData)
+      .then((res) => {
         console.log(res.data);
         this.setState({
           loading: false
         });
-        this.props.history.push("/");
+        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
+        this.props.history.push('/');
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({
           errors: err.response.data,
           loading: false
         });
       });
   };
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
   render() {
     const { classes } = this.props;
     const { errors, loading } = this.state;
+
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} alt="cat image" className={classes.image} />
+          <img src={AppIcon} alt="monkey" className={classes.image} />
           <Typography variant="h2" className={classes.pageTitle}>
             Login
           </Typography>
@@ -107,7 +87,7 @@ class login extends Component {
               name="password"
               type="password"
               label="Password"
-              className={classes.TextField}
+              className={classes.textField}
               helperText={errors.password}
               error={errors.password ? true : false}
               value={this.state.password}
@@ -125,16 +105,15 @@ class login extends Component {
               color="primary"
               className={classes.button}
               disabled={loading}
-              label="Log In"
             >
-              Log In
+              Login
               {loading && (
                 <CircularProgress size={30} className={classes.progress} />
               )}
             </Button>
             <br />
             <small>
-              dont have an account? sign up <Link to="/signup">here</Link>
+              dont have an account ? sign up <Link to="/signup">here</Link>
             </small>
           </form>
         </Grid>
@@ -147,4 +126,5 @@ class login extends Component {
 login.propTypes = {
   classes: PropTypes.object.isRequired
 };
+
 export default withStyles(styles)(login);
