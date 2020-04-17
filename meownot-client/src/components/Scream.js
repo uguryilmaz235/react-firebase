@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
 import MyButton from "../util/MyButton";
+import DeleteScream from "./DeleteScream";
 // MUI Stuff
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -20,16 +21,17 @@ import { likeScream, unlikeScream } from "../redux/actions/dataActions";
 
 const styles = {
   card: {
+    position: "relative",
     display: "flex",
-    marginBottom: 20
+    marginBottom: 20,
   },
   image: {
-    minWidth: 200
+    minWidth: 200,
   },
   content: {
     padding: 25,
-    objectFit: "cover"
-  }
+    objectFit: "cover",
+  },
 };
 
 class Scream extends Component {
@@ -37,7 +39,7 @@ class Scream extends Component {
     if (
       this.props.user.likes &&
       this.props.user.likes.find(
-        like => like.screamId === this.props.scream.screamId
+        (like) => like.screamId === this.props.scream.screamId
       )
     )
       return true;
@@ -60,9 +62,12 @@ class Scream extends Component {
         userHandle,
         screamId,
         likeCount,
-        commentCount
+        commentCount,
       },
-      user: { authenticated }
+      user: {
+        authenticated,
+        credentials: { handle },
+      },
     } = this.props;
     const likeButton = !authenticated ? (
       <MyButton tip="Like">
@@ -79,6 +84,10 @@ class Scream extends Component {
         <FavoriteBorder color="primary" />
       </MyButton>
     );
+    const deleteButton =
+      authenticated && userHandle === handle ? (
+        <DeleteScream screamId={screamId} />
+      ) : null;
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -95,6 +104,7 @@ class Scream extends Component {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
@@ -116,16 +126,16 @@ Scream.propTypes = {
   unlikeScream: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   scream: PropTypes.object.isRequired,
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  user: state.user
+const mapStateToProps = (state) => ({
+  user: state.user,
 });
 
 const mapActionsToProps = {
   likeScream,
-  unlikeScream
+  unlikeScream,
 };
 
 export default connect(
