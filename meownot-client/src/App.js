@@ -18,6 +18,7 @@ import home from "./pages/home";
 import login from "./pages/login";
 import signup from "./pages/signup";
 import axios from "axios";
+import "./App.css";
 
 const theme = createMuiTheme(themeObject);
 

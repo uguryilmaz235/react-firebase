@@ -24,13 +24,26 @@ const styles = {
     position: "relative",
     display: "flex",
     marginBottom: 20,
+    background:
+      "linear-gradient(45deg, rgb(175, 163, 161) 30%, rgb(6, 170, 249) 90%)",
+    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   },
   image: {
-    minWidth: 200,
-  },
-  content: {
-    padding: 25,
+    marginTop: 10,
+    marginBottom: 10,
+    marginRight: -10,
+    marginLeft: 0,
+    width: 75,
+    height: 75,
     objectFit: "cover",
+    maxWidth: "100%",
+    borderRadius: "70%",
+  },
+
+  content: {
+    padding: 15,
+    objectFit: "cover",
+    opacity: 1.2,
   },
 };
 
@@ -95,6 +108,7 @@ class Scream extends Component {
           title="Profile image"
           className={classes.image}
         />
+
         <CardContent className={classes.content}>
           <Typography
             variant="h5"
@@ -108,6 +122,7 @@ class Scream extends Component {
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
+
           <Typography variant="body1">{body}</Typography>
           {likeButton}
           <span>{likeCount} Likes</span>

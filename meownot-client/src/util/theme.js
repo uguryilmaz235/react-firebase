@@ -1,39 +1,38 @@
 export default {
-  
-    palette: {
-      primary: {
-        main: '#d32f2f',
-      },
-      secondary: {
-        main: '#ff5722',
-      },
+  palette: {
+    primary: {
+      main: "#d32f2f",
     },
-  
+    secondary: {
+      main: "#ff5722",
+    },
+  },
+
   typography: {
-    useNextVariants: true
+    useNextVariants: true,
   },
   form: {
-    textAlign: 'center'
+    textAlign: "center",
   },
   image: {
-    margin: '20px auto 20px auto'
+    margin: "20px auto 20px auto",
   },
   pageTitle: {
-    margin: '10px auto 10px auto'
+    margin: "10px auto 10px auto",
   },
   textField: {
-    margin: '10px auto 10px auto'
+    margin: "10px auto 10px auto",
   },
   button: {
     marginTop: 20,
-    position: 'relative'
+    position: "relative",
   },
   customError: {
-    color: 'red',
-    fontSize: '0.8rem',
-    marginTop: 10
+    color: "red",
+    fontSize: "0.8rem",
+    marginTop: 10,
   },
   progress: {
-    position: 'absolute'
-  }
+    position: "absolute",
+  },
 };
