@@ -11,12 +11,11 @@ import Button from "@material-ui/core/Button";
 // Icons
 import HomeIcon from "@material-ui/icons/Home";
 import Notifications from "@material-ui/icons/Notifications";
-
 class Navbar extends Component {
   render() {
     const { authenticated } = this.props;
     return (
-      <AppBar position="static" colorSecondary>
+      <AppBar position="static">
         <Toolbar className="nav-container" variant="dense">
           {authenticated ? (
             <Fragment>
@@ -57,5 +56,4 @@ Navbar.propTypes = {
 const mapStateToProps = (state) => ({
   authenticated: state.user.authenticated,
 });
-
 export default connect(mapStateToProps)(Navbar);

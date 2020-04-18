@@ -29,6 +29,7 @@ const styles = (theme) => ({
     top: "10%",
   },
 });
+
 class PostScream extends Component {
   state = {
     open: false,
@@ -121,6 +122,7 @@ class PostScream extends Component {
     );
   }
 }
+
 PostScream.propTypes = {
   postScream: PropTypes.func.isRequired,
   UI: PropTypes.object.isRequired,

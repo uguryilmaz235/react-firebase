@@ -29,7 +29,7 @@ export const getScreams = () => (dispatch) => {
       });
     });
 };
-
+// Post a scream
 export const postScream = (newScream) => (dispatch) => {
   dispatch({ type: LOADING_UI });
   axios
@@ -48,7 +48,6 @@ export const postScream = (newScream) => (dispatch) => {
       });
     });
 };
-
 // Like a scream
 export const likeScream = (screamId) => (dispatch) => {
   axios

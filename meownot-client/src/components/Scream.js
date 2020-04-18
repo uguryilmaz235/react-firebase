@@ -25,14 +25,14 @@ const styles = {
     display: "flex",
     marginBottom: 20,
     background:
-      "linear-gradient(45deg, rgb(175, 163, 161) 30%, rgb(6, 170, 249) 90%)",
+      "linear-gradient(45deg, rgb(175, 163, 161) 40%, rgb(6, 170, 249) 80%)",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
   },
   image: {
     marginTop: 10,
     marginBottom: 10,
-    marginRight: -10,
-    marginLeft: 0,
+    marginRight: 0,
+    marginLeft: 10,
     width: 75,
     height: 75,
     objectFit: "cover",
@@ -42,8 +42,8 @@ const styles = {
 
   content: {
     padding: 15,
+    paddingBottom: 5,
     objectFit: "cover",
-    opacity: 1.2,
   },
 };
 
@@ -122,8 +122,9 @@ class Scream extends Component {
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
-
+          <br />
           <Typography variant="body1">{body}</Typography>
+          <br />
           {likeButton}
           <span>{likeCount} Likes</span>
           <MyButton tip="comments">

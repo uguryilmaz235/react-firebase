@@ -22,8 +22,10 @@ import { logoutUser, uploadImage } from "../redux/actions/userActions";
 
 const styles = (theme) => ({
   paper: {
-    padding: 20,
-    backgroundColor: "rgb(6, 170, 249)",
+    padding: 15,
+    background:
+      "linear-gradient(45deg, rgb(175, 163, 161) 40%, rgb(6, 170, 249) 80%)",
+    // backgroundColor: "rgb(175, 163, 161)",
   },
   profile: {
     "& .image-wrapper": {
@@ -95,7 +97,7 @@ class Profile extends Component {
 
     let profileMarkup = !loading ? (
       authenticated ? (
-        <Paper className={classes.paper} rounded backgroundColor="#6c725f17">
+        <Paper className={classes.paper} backgroundcolor="#6c725f17">
           <div className={classes.profile}>
             <div className="image-wrapper">
               <img src={imageUrl} alt="profile" className="profile-image" />
