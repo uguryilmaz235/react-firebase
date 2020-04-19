@@ -1,15 +1,15 @@
-const isEmail = email => {
+const isEmail = (email) => {
   const regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (email.match(regEx)) return true;
   else return false;
 };
 
-const isEmpty = string => {
+const isEmpty = (string) => {
   if (string.trim() === "") return true;
   else return false;
 };
 
-exports.validateSignupData = data => {
+exports.validateSignupData = (data) => {
   let errors = {};
 
   if (isEmpty(data.email)) {
@@ -25,11 +25,11 @@ exports.validateSignupData = data => {
 
   return {
     errors,
-    valid: Object.keys(errors).length === 0 ? true : false
+    valid: Object.keys(errors).length === 0 ? true : false,
   };
 };
 
-exports.validateLoginData = data => {
+exports.validateLoginData = (data) => {
   let errors = {};
 
   if (isEmpty(data.email)) errors.email = "Must not be empty";
@@ -37,11 +37,11 @@ exports.validateLoginData = data => {
 
   return {
     errors,
-    valid: Object.keys(errors).length === 0 ? true : false
+    valid: Object.keys(errors).length === 0 ? true : false,
   };
 };
 //  GET USER DETAILS
-exports.reduceUserDetails = data => {
+exports.reduceUserDetails = (data) => {
   let userDetails = {};
   if (!isEmpty(data.bio.trim())) userDetails.bio = data.bio;
 
