@@ -23,6 +23,7 @@ const styles = {
   card: {
     position: "relative",
     display: "flex",
+    // display: "-webkit-box",
     marginBottom: 20,
     background:
       "linear-gradient(45deg, rgb(175, 163, 161) 40%, rgb(6, 170, 249) 80%)",
@@ -37,6 +38,7 @@ const styles = {
     height: 75,
     objectFit: "cover",
     maxWidth: "100%",
+    minWidth: "75px",
     borderRadius: "70%",
   },
 
