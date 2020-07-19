@@ -35,4 +35,8 @@ export default {
   progress: {
     position: "absolute",
   },
+  body: {
+    background:
+      "linear-gradient(to right, rgb(175, 163, 161), rgb(6, 170, 249)) !important",
+  },
 };
