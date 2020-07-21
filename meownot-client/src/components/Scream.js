@@ -27,6 +27,8 @@ const styles = {
     background:
       "linear-gradient(45deg, rgb(175, 163, 161) 40%, rgb(6, 170, 249) 80%)",
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+    alignItems: "stretch",
+    flexDirection: "row"
   },
   image: {
     marginTop: 10,

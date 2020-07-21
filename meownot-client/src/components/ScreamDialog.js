@@ -4,6 +4,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "../util/MyButton";
 import LikeButton from "./LikeButton";
 import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { Link } from "react-router-dom";
 // MUI Stuff
 import Dialog from "@material-ui/core/Dialog";
@@ -23,16 +24,16 @@ const styles = (theme) => ({
   ...theme,
   invisibleSeparator: {
     border: "none",
-    margin: 4,
+    margin: 3,
   },
   profileImage: {
-    maxWidth: 200,
-    height: 200,
+    maxWidth: 100,
+    height: 100,
     borderRadius: "50%",
     objectFit: "cover",
   },
   dialogContent: {
-    padding: 20,
+    padding: 5,
   },
   closeButton: {
     position: "absolute",
@@ -47,6 +48,9 @@ const styles = (theme) => ({
     marginTop: 50,
     marginBottom: 50,
   },
+  dayJs: {
+    marginLeft: 5
+  }
 });
 
 class ScreamDialog extends Component {
@@ -72,43 +76,52 @@ class ScreamDialog extends Component {
         commentCount,
         userImage,
         userHandle,
+        dayJs,
       },
       UI: { loading },
     } = this.props;
+    dayjs.extend(relativeTime);
 
     const dialogMarkup = loading ? (
       <div className={classes.spinnerDiv}>
         <CircularProgress size={200} thickness={2} />
       </div>
     ) : (
-      <Grid container spacing={16}>
-        <Grid item sm={5}>
-          <img src={userImage} alt="Profile" className={classes.profileImage} />
+        <Grid container spacing={16}>
+          <Grid item sm={2}>
+            <img src={userImage} alt="Profile" className={classes.profileImage} />
+          </Grid>
+          <Grid item sm={9}>
+            <Typography
+              component={Link}
+              color="primary"
+              variant="h5"
+              to={`/users/${userHandle}`}
+            >
+              @{userHandle}
+
+            </Typography>
+            <hr className={classes.invisibleSeparator} />
+            <Typography className={classes.dayJs} variant="body2" color="textSecondary">
+              {dayjs(createdAt).fromNow()}
+            </Typography>
+            <hr className={classes.invisibleSeparator} />
+            <Typography variant="body1">{body}</Typography>
+            <Typography variant="body2" color="textSecondary">
+              <hr className={classes.invisibleSeparator} />
+              {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
+            </Typography>
+            <LikeButton screamId={screamId} />
+            <span>{likeCount} likes</span>
+            <MyButton tip="comments">
+              <ChatIcon color="primary" />
+            </MyButton>
+            <span>{commentCount} comments</span>
+
+          </Grid>
+
         </Grid>
-        <Grid item sm={7}>
-          <Typography
-            component={Link}
-            color="primary"
-            variant="h5"
-            to={`/users/${userHandle}`}
-          >
-            @{userHandle}
-          </Typography>
-          <hr className={classes.invisibleSeparator} />
-          <Typography variant="body2" color="textSecondary">
-            {dayjs(createdAt).format("h:mm a, MMMM DD YYYY")}
-          </Typography>
-          <hr className={classes.invisibleSeparator} />
-          <Typography variant="body1">{body}</Typography>
-          <LikeButton screamId={screamId} />
-          <span>{likeCount} likes</span>
-          <MyButton tip="comments">
-            <ChatIcon color="primary" />
-          </MyButton>
-          <span>{commentCount} comments</span>
-        </Grid>
-      </Grid>
-    );
+      );
     return (
       <Fragment>
         <MyButton
