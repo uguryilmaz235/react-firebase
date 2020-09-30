@@ -39,4 +39,13 @@ export default {
     background:
       "linear-gradient(to right, rgb(175, 163, 161), rgb(6, 170, 249)) !important",
   },
+  invisibleSeparator: {
+    border: "none",
+    margin: 3,
+  },
+  visibleSeparator: {
+    width:'100%',
+    borderBottom: '1px solid rgba(0,0,0,0,1)',
+    marginBottom: 20
+  }
 };
