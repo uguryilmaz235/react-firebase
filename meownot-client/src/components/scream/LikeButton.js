@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import MyButton from "../../util/MyButton";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import MyButton from '../../util/MyButton';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 // Icons
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 // REdux
-import { connect } from "react-redux";
-import { likeScream, unlikeScream } from "../../redux/actions/dataActions";
+import { connect } from 'react-redux';
+import { likeScream, unlikeScream } from '../../redux/actions/dataActions';
 
 export class LikeButton extends Component {
   likedScream = () => {
@@ -29,18 +29,18 @@ export class LikeButton extends Component {
   render() {
     const { authenticated } = this.props.user;
     const likeButton = !authenticated ? (
-      <Link to="/login">
-        <MyButton tip="Like">
-          <FavoriteBorder color="primary" />
-        </MyButton>{" "}
+      <Link to='/login'>
+        <MyButton tip='Like'>
+          <FavoriteBorder color='primary' />
+        </MyButton>{' '}
       </Link>
     ) : this.likedScream() ? (
-      <MyButton tip="Undo like" onClick={this.unlikeScream}>
-        <FavoriteIcon color="primary" />
+      <MyButton tip='Undo like' onClick={this.unlikeScream}>
+        <FavoriteIcon color='primary' />
       </MyButton>
     ) : (
-      <MyButton tip="Like" onClick={this.likeScream}>
-        <FavoriteBorder color="primary" />
+      <MyButton tip='Like' onClick={this.likeScream}>
+        <FavoriteBorder color='primary' />
       </MyButton>
     );
     return likeButton;

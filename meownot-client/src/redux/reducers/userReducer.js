@@ -5,7 +5,7 @@ import {
   LOADING_USER,
   LIKE_SCREAM,
   UNLIKE_SCREAM
-} from "../types";
+} from '../types';
 
 const initialState = {
   authenticated: false,

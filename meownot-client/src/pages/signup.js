@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import PropTypes from "prop-types";
-import AppIcon from "../images/icon.png";
-//import axios from "axios";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
+import PropTypes from 'prop-types';
+import AppIcon from '../images/icon.png';
+//import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // MUI Stuff
-import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 // Redux Staff
-import { connect } from "react-redux";
-import { signupUser } from "../redux/actions/userActions";
+import { connect } from 'react-redux';
+import { signupUser } from '../redux/actions/userActions';
 
 const styles = theme => ({
   ...theme
@@ -23,10 +23,10 @@ class signup extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
-      password: "",
-      confirmPassword: "",
-      handle: "",
+      email: '',
+      password: '',
+      confirmPassword: '',
+      handle: '',
       errors: {}
     };
   }
@@ -64,16 +64,16 @@ class signup extends Component {
       <Grid container className={classes.form}>
         <Grid item sm />
         <Grid item sm>
-          <img src={AppIcon} alt="monkey" className={classes.image} />
-          <Typography variant="h2" className={classes.pageTitle}>
+          <img src={AppIcon} alt='monkey' className={classes.image} />
+          <Typography variant='h2' className={classes.pageTitle}>
             SignUp
           </Typography>
           <form noValidate onSubmit={this.handleSubmit}>
             <TextField
-              id="email"
-              name="email"
-              type="email"
-              label="Email"
+              id='email'
+              name='email'
+              type='email'
+              label='Email'
               className={classes.textField}
               helperText={errors.email}
               error={errors.email ? true : false}
@@ -82,10 +82,10 @@ class signup extends Component {
               fullWidth
             />
             <TextField
-              id="password"
-              name="password"
-              type="password"
-              label="Password"
+              id='password'
+              name='password'
+              type='password'
+              label='Password'
               className={classes.textField}
               helperText={errors.password}
               error={errors.password ? true : false}
@@ -94,10 +94,10 @@ class signup extends Component {
               fullWidth
             />
             <TextField
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              label="Confirm Password"
+              id='confirmPassword'
+              name='confirmPassword'
+              type='password'
+              label='Confirm Password'
               className={classes.textField}
               helperText={errors.confirmPassword}
               error={errors.confirmPassword ? true : false}
@@ -106,10 +106,10 @@ class signup extends Component {
               fullWidth
             />
             <TextField
-              id="handle"
-              name="handle"
-              type="text"
-              label="Handle"
+              id='handle'
+              name='handle'
+              type='text'
+              label='Handle'
               className={classes.textField}
               helperText={errors.handle}
               error={errors.handle ? true : false}
@@ -118,14 +118,14 @@ class signup extends Component {
               fullWidth
             />
             {errors.general && (
-              <Typography variant="body2" className={classes.customError}>
+              <Typography variant='body2' className={classes.customError}>
                 {errors.general}
               </Typography>
             )}
             <Button
-              type="submit"
-              variant="contained"
-              color="primary"
+              type='submit'
+              variant='contained'
+              color='primary'
               className={classes.button}
               disabled={loading}
             >
@@ -136,7 +136,7 @@ class signup extends Component {
             </Button>
             <br />
             <small>
-              Already have an account ? Login <Link to="/login">here</Link>
+              Already have an account ? Login <Link to='/login'>here</Link>
             </small>
           </form>
         </Grid>

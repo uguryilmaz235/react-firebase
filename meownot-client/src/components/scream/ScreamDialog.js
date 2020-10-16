@@ -83,27 +83,27 @@ class ScreamDialog extends Component {
     ) : (
       <Grid container spacing={16}>
         <Grid item sm={5}>
-          <img src={userImage} alt="Profile" className={classes.profileImage} />
+          <img src={userImage} alt='Profile' className={classes.profileImage} />
         </Grid>
         <Grid item sm={7}>
           <Typography
             component={Link}
-            color="primary"
-            variant="h5"
+            color='primary'
+            variant='h5'
             to={`/users/${userHandle}`}
           >
             @{userHandle}
           </Typography>
           <hr className={classes.invisibleSeparator} />
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant='body2' color='textSecondary'>
             {dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
           </Typography>
           <hr className={classes.invisibleSeparator} />
-          <Typography variant="body1">{body}</Typography>
+          <Typography variant='body1'>{body}</Typography>
           <LikeButton screamId={screamId} />
           <span>{likeCount} likes</span>
-          <MyButton tip="comments">
-            <ChatIcon color="primary" />
+          <MyButton tip='comments'>
+            <ChatIcon color='primary' />
           </MyButton>
           <span>{commentCount} comments</span>
         </Grid>
@@ -116,19 +116,19 @@ class ScreamDialog extends Component {
       <Fragment>
         <MyButton
           onClick={this.handleOpen}
-          tip="Expand scream"
+          tip='Expand scream'
           tipClassName={classes.expandButton}
         >
-          <UnfoldMore color="primary" />
+          <UnfoldMore color='primary' />
         </MyButton>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
           fullWidth
-          maxWidth="sm"
+          maxWidth='sm'
         >
           <MyButton
-            tip="Close"
+            tip='Close'
             onClick={this.handleClose}
             tipClassName={classes.closeButton}
           >

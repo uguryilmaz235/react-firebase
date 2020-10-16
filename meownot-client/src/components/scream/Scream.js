@@ -1,34 +1,34 @@
-import React, { Component } from "react";
-import withStyles from "@material-ui/core/styles/withStyles";
-import { Link } from "react-router-dom";
-import dayjs from "dayjs";
-import relativeTime from "dayjs/plugin/relativeTime";
-import PropTypes from "prop-types";
-import MyButton from "../../util/MyButton";
-import DeleteScream from "./DeleteScream";
-import ScreamDialog from "./ScreamDialog";
-import LikeButton from "../scream/LikeButton";
+import React, { Component } from 'react';
+import withStyles from '@material-ui/core/styles/withStyles';
+import { Link } from 'react-router-dom';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import PropTypes from 'prop-types';
+import MyButton from '../../util/MyButton';
+import DeleteScream from './DeleteScream';
+import ScreamDialog from './ScreamDialog';
+import LikeButton from '../scream/LikeButton';
 // MUI Stuff
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Typography from '@material-ui/core/Typography';
 // Icons
-import ChatIcon from "@material-ui/icons/Chat";
+import ChatIcon from '@material-ui/icons/Chat';
 // Redux
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 const styles = {
   card: {
-    position: "relative",
-    display: "flex",
-    // display: "-webkit-box",
+    position: 'relative',
+    display: 'flex',
+    // display: '-webkit-box',
     marginBottom: 20,
     background:
-      "linear-gradient(45deg, rgb(175, 163, 161) 40%, rgb(6, 170, 249) 80%)",
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    alignItems: "stretch",
-    flexDirection: "row"
+      'linear-gradient(45deg, rgb(175, 163, 161) 40%, rgb(6, 170, 249) 80%)',
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    alignItems: 'stretch',
+    flexDirection: 'row'
   },
   image: {
     marginTop: 10,
@@ -37,16 +37,16 @@ const styles = {
     marginLeft: 10,
     width: 75,
     height: 75,
-    objectFit: "cover",
-    maxWidth: "100%",
-    minWidth: "75px",
-    borderRadius: "70%",
+    objectFit: 'cover',
+    maxWidth: '100%',
+    minWidth: '75px',
+    borderRadius: '70%',
   },
 
   content: {
     padding: 15,
     paddingBottom: 5,
-    objectFit: "cover",
+    objectFit: 'cover',
   },
 };
 
@@ -78,27 +78,27 @@ class Scream extends Component {
       <Card className={classes.card}>
         <CardMedia
           image={userImage}
-          title="Profile image"
+          title='Profile image'
           className={classes.image}
         />
         <CardContent className={classes.content}>
           <Typography
-            variant="h5"
+            variant='h5'
             component={Link}
             to={`/users/${userHandle}`}
-            color="primary"
+            color='primary'
           >
             {userHandle}
           </Typography>
           {deleteButton}
-          <Typography variant="body2" color="textSecondary">
+          <Typography variant='body2' color='textSecondary'>
             {dayjs(createdAt).fromNow()}
           </Typography>
-          <Typography variant="body1">{body}</Typography>
+          <Typography variant='body1'>{body}</Typography>
           <LikeButton screamId={screamId} />
           <span>{likeCount} Likes</span>
-          <MyButton tip="comments">
-            <ChatIcon color="primary" />
+          <MyButton tip='comments'>
+            <ChatIcon color='primary' />
           </MyButton>
           <span>{commentCount} comments</span>
           <ScreamDialog screamId={screamId} userHandle={userHandle} />

@@ -44,9 +44,9 @@ class CommentForm extends Component {
       <Grid item sm={12} style={{ textAlign: 'center' }}>
         <form onSubmit={this.handleSubmit}>
           <TextField
-            name="body"
-            type="text"
-            label="Comment on scream"
+            name='body'
+            type='text'
+            label='Comment on scream'
             error={errors.comment ? true : false}
             helperText={errors.comment}
             value={this.state.body}
@@ -55,9 +55,9 @@ class CommentForm extends Component {
             className={classes.textField}
           />
           <Button
-            type="submit"
-            variant="contained"
-            color="primary"
+            type='submit'
+            variant='contained'
+            color='primary'
             className={classes.button}
           >
             Submit
