@@ -17,12 +17,11 @@ import AuthRoute from './util/AuthRoute';
 import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
+import user from './pages/user';
 
 import axios from 'axios';
 
 const theme = createMuiTheme(themeObject);
-
-axios.defaults.baseURL = 'https://us-central1-meow-not.cloudfunctions.net/api';
 
 const token = localStorage.FBIdToken;
 if (token) {
@@ -44,11 +43,12 @@ class App extends Component {
         <Provider store={store}>
           <Router>
             <Navbar />
-            <div className='container'>
+            <div className="container">
               <Switch>
-                <Route exact path='/' component={home} />
-                <AuthRoute exact path='/login' component={login} />
-                <AuthRoute exact path='/signup' component={signup} />
+                <Route exact path="/" component={home} />
+                <AuthRoute exact path="/login" component={login} />
+                <AuthRoute exact path="/signup" component={signup} />
+                <Route exact path="/users/:handle" component={user} />
               </Switch>
             </div>
           </Router>
